@@ -1,0 +1,10 @@
+{
+	"name": "gun/mypetabit",
+	"description": "My Petabit svript",
+	"keywords": ["petabit"],
+	"license": "MIT",
+	"type": "project",
+	"require": {
+		"google/apiclient":"^2.0"
+	}
+}
