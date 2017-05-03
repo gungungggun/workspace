@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="../00include/vue2.3.2.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>テキスト</h1>
+            <span>{{ message }}</span>
+            <span v-once>{{ message }}</span>
+        </div>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    message: 'message',
+                }
+            })
+        </script>
+
+        <div id="app2">
+            <h1>生のhtml</h1>
+            <div>{{ html  }}</div>
+            <div v-html="html"></div>
+        </div>
+        <script>
+            var app2 = new Vue({
+                el: '#app2',
+                data: {
+                    html: '<p style="color:#F00;">html</p>'
+                }
+            })
+        </script>
+
+        <div id="app3">
+            <h1>属性</h1>
+            <div v-bind:id="dynamicId" >vind id</div>
+            <button v-bind:disabled="someDynamicCondition">Button</button>
+        </div>
+        <script>
+            var app3 = new Vue({
+                el: '#app3',
+                data: {
+                    dynamicId: 'dyyyyyy',
+                    someDynamicCondition: true
+                }
+            })
+        </script>
+
+        <div id="app4">
+            <h1>javascript</h1>
+            <div v-bind:id="'test-' + dynamicId" >vind id</div>
+            <span>{{ someDynamicCondition ? 'YES' : 'NO'  }}</span>
+        </div>
+        <script>
+            var app4 = new Vue({
+                el: '#app4',
+                data: {
+                    dynamicId: 'dyyyyyy',
+                    someDynamicCondition: true
+                }
+            })
+        </script>
+
+        <div id="app5">
+            <h1>ディレクティブ</h1>
+            <div v-if="num > 10">{{ num  }}</div>
+        </div>
+        <script>
+            var app5 = new Vue({
+                el: '#app5',
+                data: {
+                    num: 20
+                }
+            })
+        </script>
+
+        <div id="app6">
+            <h1>フィルタ</h1>
+            <div>{{ message | capitalize }}</div>
+            <div>{{ message | capitalize | kakko }}</div>
+            <div>{{ message | filterA('arg1', 1) }}</div>
+        </div>
+        <script>
+            var app5 = new Vue({
+                el: '#app6',
+                data: {
+                    message: 'message'
+                },
+                filters: {
+                    capitalize: function (value) {
+                        if (!value) return ''
+                        value = value.toString()
+                        return value.charAt(0).toUpperCase() + value.slice(1)
+                    },
+                    kakko: function (value) {
+                        return "'"+value+"'";
+                    },
+                    filterA: function (value, arg1, arg2) {
+                        return arg1+value;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
