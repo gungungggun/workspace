@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="../00include/vue2.3.2.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>基本的なリスト1</h1>
+            <ul>
+                <li v-for="item in items">{{ item }}</li>
+            </ul>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    items: [
+                        1,2,3
+                    ]
+                }
+            })
+        </script>
+
+        <div id="app1">
+            <h1>基本的なリスト2</h1>
+            <ul>
+                <li v-for="item in items">{{ item.text }}</li>
+            </ul>
+        </div>
+        <script>
+            var vm1 = new Vue({
+                el: '#app1',
+                data: {
+                    items: [
+                        {text: 1},
+                        {text: 2},
+                        {text: 3},
+                    ]
+                }
+            })
+        </script>
+
+        <div id="app2">
+            <h1>index</h1>
+            <ul>
+                <li v-for="(item, index) in items">{{ index }}{{ item.text }}</li>
+            </ul>
+        </div>
+        <script>
+            var vm2 = new Vue({
+                el: '#app2',
+                data: {
+                    items: [
+                        {text: 1},
+                        {text: 2},
+                        {text: 3},
+                    ]
+                }
+            })
+        </script>
+
+        <div id="app3">
+            <h1>オブジェクト</h1>
+            <ul>
+                <li v-for="item in object">{{ item }}</li>
+            </ul>
+            <ul>
+                <li v-for="(item, key) in object">{{ key }}:{{ item }}</li>
+            </ul>
+            <ul>
+                <li v-for="(item, key, index) in object">{{ index }}-{{ key }}:{{ item }}</li>
+            </ul>
+        </div>
+        <script>
+            var vm3 = new Vue({
+                el: '#app3',
+                data: {
+                    object: {
+                        name: 'Taro',
+                        age: 20,
+                        gender: 'male',
+                    }
+                }
+            })
+        </script>
+
+        <div id="app4">
+            <h1>範囲</h1>
+            <div>
+                <span v-for="n in 10">{{ n }}:{{ arr[n] }}</span>
+            </div>
+        </div>
+        <script>
+            var vm4 = new Vue({
+                el: '#app4',
+                data: {
+                    arr: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l']
+                }
+            })
+        </script>
+
+        <div id="app5">
+            <h1>ifとfor</h1>
+            <li v-for="todo in todos" v-if="!todo.isComplete">
+                {{ todo.text }}
+            </li>
+        </div>
+        <script>
+            var vm5 = new Vue({
+                el: '#app5',
+                data: {
+                    todos: [
+                        {
+                            text: 'aaaaaaa',
+                            isComplete: true,
+                        },
+                        {
+                            text: 'bbbbbb',
+                            isComplete: true,
+                        },
+                        {
+                            text: 'ccccc',
+                            isComplete: false,
+                        },
+                    ]
+                }
+            })
+        </script>
+    </body>
+</html>
