@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="../00include/vue2.3.2.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>オブジェクト構文</h1>
+            <div v-bind:class="{ active: isActive }">Active</div>
+            <div class="static"
+                v-bind:class="{ active: isActive, 'text-danger': hasError }">
+                Active hasError
+            </div>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    isActive: true,
+                    hasError: true
+                }
+            })
+        </script>
+        <style>
+            .active{
+                color:#F00;
+            }
+        </style>
+
+        <div id="app2">
+            <h1>オブジェクト構文(まとめて)</h1>
+            <div v-bind:class="objectClass">Active</div>
+            </div>
+        </div>
+        <script>
+            var vm2 = new Vue({
+                el: '#app2',
+                data: {
+                    objectClass: {
+                        active: true,
+                        'text-danger': true,
+                        number: 10
+                    }
+                }
+            })
+        </script>
+
+        <div id="app3">
+            <h1>配列構文</h1>
+            <div v-bind:class="[isActive, hasError]">Active</div>
+            </div>
+        </div>
+        <script>
+            var vm3 = new Vue({
+                el: '#app3',
+                data: {
+                   isActive: 'active',
+                   hasError: 'text-danger'
+                }
+            })
+        </script>
+
+        <div id="app4">
+            <h1>コンポーネント</h1>
+            <my-component class="active boo"></my-component>
+        </div>
+        <script>
+            Vue.component('my-component', {
+                template: '<p class="foo bar">Hi</p>'
+            })
+            var vm4 = new Vue({
+                el: '#app4'
+            })
+        </script>
+    </body>
+</html>

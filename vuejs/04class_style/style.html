@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="../00include/vue2.3.2.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>パターン１</h1>
+            <div v-bind:style="{ color: activeColor, 'font-size': fontSize + 'px' }">style</div>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    activeColor: '#0F0',
+                    fontSize: 20
+                }
+            })
+        </script>
+
+        <div id="app2">
+            <h1>パターン２</h1>
+            <div v-bind:style="styleObject">style</div>
+        </div>
+        <script>
+            var vm2 = new Vue({
+                el: '#app2',
+                data: {
+                    styleObject: {
+                        color: '#0F0',
+                        fontSize: '20px'
+                    }
+                }
+            })
+        </script>
+
+        <div id="app3">
+            <h1>パターン３</h1>
+            <div v-bind:style="style">style</div>
+        </div>
+        <script>
+            var vm3 = new Vue({
+                el: '#app3',
+                data: {
+                    activeColor: '#0F0',
+                    fontSize: 20
+                },
+                computed: {
+                    style: function() {
+                        return {
+                            color: this.activeColor,
+                            fontSize: this.fontSize + 'px'
+                        }
+                    }
+                }
+            })
+        </script>
+
+
+    </body>
+</html>
