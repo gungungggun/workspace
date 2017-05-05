@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="../00include/vue2.3.2.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>条件付きレンダリング</h1>
+            <div v-if="ok">表示</div>
+            <div v-if="ng">非表示</div>
+            <div v-if="ok1">表示</div>
+            <div v-if="ng1">非表示</div>
+            <div v-if="!ok">表示</div>
+            <div v-else>非表示</div>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    ok: true,
+                    ng: false,
+                    ok1: 1,
+                    ng1: 0
+                }
+            })
+        </script>
+
+        <div id="app1">
+            <h1>テンプレート</h1>
+            <template v-if="ok">
+                <h1>Title</h1>
+                <p>Paragraph 1</p>
+                <p>Paragraph 2</p>
+            </template>
+            <template v-if="!ok">
+                <h1>Title2</h1>
+                <p>Paragraph 3</p>
+                <p>Paragraph 4</p>
+            </template>
+        </div>
+        <script>
+            var vm1 = new Vue({
+                el: '#app1',
+                data: {
+                    ok: true
+                }
+            })
+        </script>
+
+        <div id="app2">
+            <h1>v-if v-else-if</h1>
+            <div v-if="type === 'A'">
+                A
+            </div>
+            <div v-else-if="type === 'B'">
+                B
+            </div>
+            <div v-else-if="type === 'C'">
+                C
+            </div>
+            <div v-else>
+                Not A/B/C
+            </div>
+        </div>
+        <script>
+            var vm2 = new Vue({
+                el: '#app2',
+                data: {
+                    type: 'A'
+                }
+            })
+        </script>
+
+        <div id="app3">
+            <h1>keyによる制御</h1>
+            <p>制御なし</p>
+            <template v-if="loginType === 'username'">
+                <label>Username</label>
+                <input placeholder="Enter your username">
+            </template>
+            <template v-else>
+                <label>Email</label>
+                <input placeholder="Enter your email address">
+            </template>
+
+            <p>制御あり</p>
+            <template v-if="loginType === 'username'">
+                <label>Username</label>
+                <input placeholder="Enter your username" key="username-input">
+            </template>
+            <template v-else>
+                <label>Email</label>
+                <input placeholder="Enter your email address" key="email-input">
+            </template>
+        </div>
+        <script>
+            var vm3 = new Vue({
+                el: '#app3',
+                data: {
+                    loginType: 'username'
+                }
+            })
+        </script>
+
+        <div id="app4">
+            <h1>v-show</h1>
+            <p v-show="ok">show</p>
+        </div>
+        <script>
+            var vm4 = new Vue({
+                el: '#app4',
+                data: {
+                    ok: true
+                }
+            })
+        </script>
+
+
+    </body>
+</html>
