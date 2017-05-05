@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="../00include/vue2.3.2.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>イベント発火</h1>
+            <button v-on:click="counter += 1">Add 1</button>
+            <p>The button above has been clicked {{ counter }} times.</p>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    counter: 0
+                }
+            })
+        </script>
+
+        <div id="app1">
+            <h1>メソッド実行</h1>
+            <button v-on:click="greet">Greet</button>
+        </div>
+        <script>
+            var vm1 = new Vue({
+                el: '#app1',
+                data: {
+                    name: 'Taro'
+                },
+                methods: {
+                    greet: function (event) {
+                        // メソッド内の `this` は、 Vue インスタンスを参照します
+                        alert('Hello ' + this.name + '!')
+                        // `event` は、ネイティブ DOM イベントです
+                        if (event) {
+                            alert(event.target.tagName)
+                        }
+                    }
+                }
+            })
+        </script>
+
+        <div id="app2">
+            <h1>メソッド実行引数渡し</h1>
+            <button v-on:click="say('hi')">Say hi</button>
+            <button v-on:click="say('yo')">Say yo</button>
+            <button v-on:click="say2('yo', 'yoyo')">Say yo</button>
+        </div>
+        <script>
+            var vm2 = new Vue({
+                el: '#app2',
+                methods: {
+                    say: function (message) {
+                        alert(message)
+                    },
+                    say2: function (message1, message2) {
+                        alert(message1);
+                        alert(message2);
+                    }
+                }
+            })
+        </script>
+
+        <div id="app3">
+            <h1>キー修飾子</h1>
+            <input v-on:keyup.13="keyup13" v-on:keyup.delete="deletee">
+        </div>
+        <script>
+            var vm3 = new Vue({
+                el: '#app3',
+                methods: {
+                    keyup13: function(event){
+                        console.log(event.target.value);
+                    },
+                    deletee: function(event){
+                        console.log(event.target.value);
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
