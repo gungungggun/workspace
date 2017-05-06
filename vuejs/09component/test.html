@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="../00include/vue2.3.2.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>登録</h1>
+            <my-component></my-component>
+        </div>
+        <script>
+            Vue.component('my-component', {
+                template: '<div>A custom global component!</div>'
+            })
+            var vm = new Vue({
+                el: '#app',
+            })
+        </script>
+
+        <div id="app1">
+            <h1>登録</h1>
+            <my-component></my-component>
+            <my-component2></my-component2>
+        </div>
+        <script>
+            var Child = {
+                template: '<div>A custom component!</div>'
+            }
+            var vm1 = new Vue({
+                el: '#app1',
+                components: {
+                    'my-component2': Child
+                }
+            })
+        </script>
+
+        <div id="app2">
+            <h1>データ属性</h1>
+            <simple-counter></simple-counter>
+            <simple-counter></simple-counter>
+            <simple-counter></simple-counter>
+        </div>
+        <script>
+            var data = { counter: 0 };
+            Vue.component('simple-counter', {
+                template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+                // data は技術的には関数なので、Vue は警告を出しません。
+                // しかし、各コンポーネントのインスタンスは
+                // 同じオブジェクトの参照を返します。
+                data: function () {
+                    //return data
+                    return {
+                        counter: 0
+                    }
+                }
+            })
+            var vm2 = new Vue({
+                el: '#app2',
+            })
+        </script>
+
+        <div id="app3">
+            <h1>データ伝達</h1>
+            <child message="test"></child>
+        </div>
+        <script>
+            Vue.component('child', {
+                props: ['message'],
+                template: '<span>{{ message }}</span>',
+            })
+            var vm3 = new Vue({
+                el: '#app3',
+            })
+        </script>
+
+        <div id="app4">
+            <h1>キャメルvsケバブ</h1>
+            <child2 message-text="test"></child2>
+        </div>
+        <script>
+            Vue.component('child2', {
+                props: ['messageText'],
+                template: '<span>{{ messageText }}</span>',
+            })
+            var vm4 = new Vue({
+                el: '#app4',
+            })
+        </script>
+
+        <div id="app5">
+            <h1>動的プロパティ</h1>
+            <input type="text" v-model="input">
+            <child3 v-bind:message="input"></child3>
+            <child3 :message="input"></child3>
+        </div>
+        <script>
+            Vue.component('child3', {
+                props: ['message'],
+                template: '<span>mes:{{ message }}</span>',
+            })
+            var vm5 = new Vue({
+                el: '#app5',
+                data: {
+                    input: ''
+                }
+            })
+        </script>
+
+        <div id="app6">
+            <h1>検証プロパティ</h1>
+            <assert v-bind:prop-a="3"></assert>
+        </div>
+        <script>
+            Vue.component('assert', {
+                props: {
+                    propA: {
+                        type: Number,
+                        default: 1
+                    }
+                },
+                template: '<span>{{ propA }} x 10 = {{ propA * 10 }}</span>',
+            })
+            var vm6 = new Vue({
+                el: '#app6',
+            })
+        </script>
+    </body>
+</html>
