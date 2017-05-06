@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="../00include/vue2.3.2.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>テキスト</h1>
+            <input v-model="message" placeholder="edit me">
+            <p>Message is: {{ message }}</p>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    message: 'init'
+                }
+            })
+        </script>
+
+        <div id="app1">
+            <h1>テキストエリア</h1>
+            <span>Multiline message is:</span>
+            <p style="white-space: pre">{{ message }}</p>
+            <br>
+            <textarea v-model="message" placeholder="add multiple lines"></textarea>
+        </div>
+        <script>
+            var vm1 = new Vue({
+                el: '#app1',
+                data: {
+                    message: 'init'
+                }
+            })
+        </script>
+
+        <div id="app2">
+            <h1>チェックボックス</h1>
+            <input type="checkbox" id="checkbox" v-model="checked">
+            <label for="checkbox">{{ checked }}</label>
+            <br>
+            <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+            <label for="jack">Jack</label>
+            <input type="checkbox" id="john" value="John" v-model="checkedNames">
+            <label for="john">John</label>
+            <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+            <label for="mike">Mike</label>
+            <br>
+            <span>Checked names: {{ checkedNames }}</span>
+        </div>
+        <script>
+            var vm2 = new Vue({
+                el: '#app2',
+                data: {
+                    checked: false,
+                    checkedNames: []
+                }
+            })
+        </script>
+
+        <div id="app3">
+            <h1>ラジオ</h1>
+            <input type="radio" id="one" value="One" v-model="picked">
+            <label for="one">One</label>
+            <br>
+            <input type="radio" id="two" value="Two" v-model="picked">
+            <label for="two">Two</label>
+            <br>
+            <span>Picked: {{ picked }}</span>
+        </div>
+        <script>
+            var vm3 = new Vue({
+                el: '#app3',
+                data: {
+                    picked: '',
+                }
+            })
+        </script>
+
+        <div id="app4">
+            <h1>セレクト</h1>
+            <select v-model="selected">
+                <option disabled value="">Please select one</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+            <span>Selected: {{ selected }}</span>
+            <br>
+            <select v-model="selected2" multiple>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+            <br>
+            <span>Selected: {{ selected2 }}</span>
+            <br>
+            <select v-model="selected3">
+                <option v-for="option in options" v-bind:value="option.value">
+                    {{ option.text }}
+                </option>
+            </select>
+            <span>Selected: {{ selected3 }}</span>
+        </div>
+        <script>
+            var vm4 = new Vue({
+                el: '#app4',
+                data: {
+                    selected: '',
+                    selected2: [],
+                    selected3: '',
+                    options: [
+                        {
+                            text: 'A value',
+                            value: 'A',
+                        },
+                        {
+                            text: 'B value',
+                            value: 'B',
+                        },
+                        {
+                            text: 'C value',
+                            value: 'C',
+                        },
+                    ]
+                }
+            })
+        </script>
+
+        <div id="app5">
+            <h1>修飾子</h1>
+            <p>.lazy</p>
+            <input v-model.lazy="msg">
+            <p>message:{{ msg }}</p>
+
+            <p>.number</p>
+            <input v-model.number="age">
+            <p>{{ age }}</p>
+
+            <p>.trim</p>
+            <input v-model.trim="msg2">
+            <p>message:{{ msg2  }}</p>
+        </div>
+        <script>
+            var vm5 = new Vue({
+                el: '#app5',
+                data: {
+                    msg: '',
+                    msg2: '',
+                    age: null,
+                }
+            })
+        </script>
+    </body>
+</html>
