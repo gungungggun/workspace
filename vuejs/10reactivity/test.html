@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="../00include/vue2.3.2.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>リアクティブ</h1>
+            <p>通常:{{ a }}</p>
+            <p>エラーが出てリアクティブでない:{{ b }}</p>
+            <p>setした:{{ someObject.c }}</p>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    a: 'a',
+                    someObject: {}
+                }
+            })
+            vm.a = 'b';
+            vm.b = 'b';
+            Vue.set(vm.someObject, 'c', 2);
+            vm.$set(vm.someObject, 'e', 2);
+        </script>
+    </body>
+</html>
