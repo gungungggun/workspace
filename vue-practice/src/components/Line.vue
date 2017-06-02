@@ -22,6 +22,7 @@ export default {
     return {
       msg: 'petapeta',
       input: '',
+      key: Math.random(),
       oldMessages: [
         {
           msg: 'こんにちは！',
@@ -55,22 +56,24 @@ export default {
     send: function (event) {
       if (this.input !== '') {
         let timestamp = new Date()
-        this.oldMessages.push({
+        let val = {
           msg: this.input,
           sender: 'me',
-          time: timestamp.getHours() + ':' + timestamp.getMinutes()
-        })
+          time: timestamp.getHours() + ':' + timestamp.getMinutes(),
+          key: this.key
+        }
+        this.$socket.emit('send', val)
+        this.oldMessages.push(val)
         this.input = ''
       }
-    },
-    receive: function (event) {
-      let input = '返信'
-      let timestamp = new Date()
-      this.oldMessage.push({
-        msg: input,
-        sender: 'other',
-        time: timestamp.getHours() + ':' + timestamp.getMinutes()
-      })
+    }
+  },
+  sockets: {
+    receive: function (val) {
+      if (val.key !== this.key) {
+        val.sender = 'other'
+        this.oldMessages.push(val)
+      }
     }
   }
 }
@@ -95,6 +98,7 @@ clearfix()
   .talk
     width 100%
     height 100%
+    overflow-y scroll
     background #64b7e6
     position absolute
     ul
