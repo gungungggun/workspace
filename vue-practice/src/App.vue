@@ -1,12 +1,18 @@
 <template lang="pug">
   div#app
+    g-header
     img(src="./assets/logo.png")
     router-view
 </template>
 
 <script>
+import GHeader from './components/globals/GHeader'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    GHeader
+  }
 }
 </script>
 
