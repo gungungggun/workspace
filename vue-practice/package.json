@@ -17,7 +17,8 @@
     "lodash": "^4.17.4",
     "vue": "^2.2.6",
     "vue-router": "^2.3.1",
-    "vue-socket.io": "^2.1.1-a"
+    "vue-socket.io": "^2.1.1-a",
+    "vuedraggable": "^2.13.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
