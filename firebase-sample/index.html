@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="message">
+      <h1>Firebaseてすと</h1>
+      <p>文字を入れると更新されます</p>
+      <ul>
+        <li id="chatText"></li>
+        <li><input type="text" name="" id="my_text"></li>
+        <li><a onclick="changeData()">更新</a></li>
+      </ul>
+    </div>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: ""
+  };
+  firebase.initializeApp(config);
+</script>
+<script>
+    var db = firebase.database();
+    var test = db.ref("test");
+
+    function changeData(){
+      var text = document.getElementById("my_text").value;
+      test.set({title:"example", text:text});
+    }
+
+    test.on("value", function(snapshot) {
+      document.getElementById("chatText").innerText = snapshot.val().text;
+    });
+</script>
+</body>
+</html>
