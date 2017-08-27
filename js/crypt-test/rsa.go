@@ -3,7 +3,6 @@ package main
 import (
 	"crypto/rand"
 	"crypto/rsa"
-	//"crypto/sha256"
 	"crypto/x509"
 	"encoding/base64"
 	"encoding/pem"
@@ -92,32 +91,17 @@ fHS3OZPFS0YjpWqYQkUYxQhokUHuOWF2+cJHLoDtCAwxKi0pJOqeL62eLyOfCbRt
 wQCcfRmtbXFneRT28QIDAQAB
 -----END PUBLIC KEY-----`
 	publicKey, _ := readPublicKey(kkk)
-	//publicKey, err := readPublicKey("public-key.pem")
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
 
 	//Encrypt Miryan Message
 	message := []byte("hogehoge")
-	//label := []byte("")
-	//hash := sha256.New()
 
-	// ciphertext, err := rsa.EncryptOAEP(hash, rand.Reader, publicKey, message, label)
 	ciphertext, err := rsa.EncryptPKCS1v15(rand.Reader, publicKey, message)
 	sEnc := base64.StdEncoding.EncodeToString(ciphertext)
 	fmt.Println(sEnc)
 
-	enc := "iVtNo8UR6ngfjA2j3VI81JqfJUsSg6eaC84OqvSRM6zQz8VM1XxbIlHbk+a4+LC3udTXYW4pZg8sepQhTigtmDMymcFgxOhthirCDqsdWOvReadfgcxDb/JksYtVCHmRxa7AG1S43BETP/vyavoKBLlsAyOALILzVlMr8u/dQw="
-	// enc := "Ke725c9B9SqND8eMgoD+PYJe5zTV0YqZ7buky/pXlbhGQtbyXmvDSSMPgiFdWHVNlNL2oivLxAe2REoL7LFQOW1s7JNFNIarLMSzA3lO3n5rsS2DDOMEkcRmN8FopzgPCtge5jsZJ2VK1EQIf+pSxugwIfJBMol8XVcOhXnHj+TPkkMasHFB/63m//ezyrysg/LWd3QTHVm/vvVBjdVzt7BH?sQ2dijmgcMsNVJ6moygqKEX500LvmjwuWYgiqxokqMA="
-	//enc := "A98khBzJe3EI6my1XA/daSUcgDKYIlsGlowpkIcTmzONECwixqpG+bYpbIilLotFHlaDiMZGfqgR0xe2Fm3goeV8azWj9ooXdqFtOY5zWtdWbPt0ZS0kWEsSIx5qlycj5vy15YreAfadwqIhTlcH4JuLgkHkU8U+KOvwLxpwb1m5t9UdDkQ8bM7+ydPhhWGZHKNckvHK0wP1jEA0uMM+3OwE/empta48Tr5cdEHH1BI/30W0ww==?OX+AyyV49C2OCE0h6VBbnSo/B/YpMnmPntzPaisBkdg="
-	//enc := "UIwCIbquoQ+MRbrtkOb58gMlz2eVMwGbRykliYgGRFFzPW05ww8YWxDBbW9rs543CvKt4r1A17hskVwen57CgGFdMEhlqGRewuPDzWHsHQ6LKqK6Eeai54V00pvtuqzTeE0rY29DElZZDpI44gTcu3Bz6NNgiQHLCwVczBJMTB8="
-	ciphertext2, _ := base64.StdEncoding.DecodeString(enc)
-	fmt.Println(ciphertext)
+	enc := "DIDTFnLxdqH0y2avjsESDI9rv7OQBww7J2kPBQ2q67XGnfbQvcxA0L1esn2VJpF9BHQcFFYr44fDQKl6L29lLhZWxzil1/047zY4hQVzyYfkTCBiunsg8HgzvRbPmeIhXoXtprpM8UJobbhURTtr5qMXrbMrFMvQQ+Ur/xAmMt0="
+	ciphertext, _ = base64.StdEncoding.DecodeString(enc)
 
-	//plainText, _ := rsa.DecryptOAEP(hash, rand.Reader, privateKey, ciphertext, label)
-	//fmt.Println(string(plainText))
-
-	//plainText2, _ := rsa.DecryptOAEP(hash, rand.Reader, privateKey, ciphertext2, label)
-	plainText2, _ := rsa.DecryptPKCS1v15(rand.Reader, privateKey, ciphertext2)
-	fmt.Println(string(plainText2))
+	plainText, _ := rsa.DecryptPKCS1v15(rand.Reader, privateKey, ciphertext)
+	fmt.Println(string(plainText))
 }
