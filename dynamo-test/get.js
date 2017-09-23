@@ -1,11 +1,14 @@
 let AWS = require('aws-sdk')
-let dynamo = new AWS.DynamoDB()
+let documentClient = new AWS.DynamoDB.DocumentClient()
 
 exports.handler = (event, context, callback) => {
   var param = {
-    TableName: "mock"
+    TableName: "mock",
+    Key: {
+      id: '1'
+    }
   }
-  dynamo.scan(param, (err, data) => {
+  documentClient.get(param, (err, data) => {
     console.log(JSON.stringify(data))
     console.log(err)
     callback(null, data.Items)
