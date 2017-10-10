@@ -5,6 +5,15 @@ arr = arr.filter((e) => {
 })
 console.log(arr)
 
+let arr3 = [1, 2, 3, 4, 5, 0, 9, 8, 7, 6, 0, 5, 2, 0, 0, 1, 9]
+arr3 = arr3.filter((e) => {
+  return (e !== del)
+})
+console.log(arr3)
+
+
+
+
 let arr2 = [
   {
     id: 'abcdefg',
