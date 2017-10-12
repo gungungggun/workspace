@@ -11,9 +11,6 @@ arr3 = arr3.filter((e) => {
 })
 console.log(arr3)
 
-
-
-
 let arr2 = [
   {
     id: 'abcdefg',
@@ -37,3 +34,12 @@ arr2 = arr2.filter((e) => {
   return (e.id !== del2)
 })
 console.log(arr2)
+
+let arr4 = [1, 2, 3]
+arr4.shift()
+console.log(arr4)
+
+let arr5 = [1, 2, 3]
+arr5.pop()
+console.log(arr5)
+
