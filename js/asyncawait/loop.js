@@ -3,7 +3,7 @@ function loop(i) {
     setTimeout(function() {
       console.log(i)
       resolve(i+1)
-    }, 100);
+    }, Math.floor( Math.random() * 50 ) + 50)
   }).then(function(count) {
     if (count > 10) {
     } else {
