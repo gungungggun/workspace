@@ -1,9 +1,11 @@
 const https = require('https')
 
-let options = 'https://github.com'
-options.method = 'GET'
-options.headers = {
-  'Content-Type': 'text/html'
+let options = {
+  host: 'github.com',
+  method: 'GET',
+  headers: {
+    'Content-Type': 'text/html'
+  }
 }
 
 let req = https.request(options, (res) => {
