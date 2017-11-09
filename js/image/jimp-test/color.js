@@ -1,9 +1,9 @@
 const Jimp = require("jimp")
 
 let rgb = {
-  r: 255,
-  g: 255,
-  b: 0
+  r: 135,
+  g: 141,
+  b: 167
 }
 
 let hex = Jimp.rgbaToInt(rgb.r, rgb.g, rgb.b, 255)
