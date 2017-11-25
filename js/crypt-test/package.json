@@ -12,6 +12,7 @@
     "cryptico": "^1.0.2",
     "crypto-js": "^3.1.9-1",
     "jsencrypt": "^2.3.1",
+    "jsonwebtoken": "^8.1.0",
     "pem-jwk": "^1.5.1"
   }
 }
