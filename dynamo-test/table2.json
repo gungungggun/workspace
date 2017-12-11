@@ -1,23 +1,23 @@
 {
-    "TableName": "Music2",
+    "TableName": "mock2",
     "AttributeDefinitions": [
         {
-            "AttributeName": "Artist",
+            "AttributeName": "id",
             "AttributeType": "S"
         },
         {
-            "AttributeName": "SongTitle",
+            "AttributeName": "type",
             "AttributeType": "S"
         }
     ],
     "KeySchema": [
         {
             "KeyType": "HASH",
-            "AttributeName": "Artist"
+            "AttributeName": "id"
         },
         {
             "KeyType": "RANGE",
-            "AttributeName": "SongTitle"
+            "AttributeName": "type"
         }
     ],
     "ProvisionedThroughput": {
