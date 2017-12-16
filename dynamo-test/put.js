@@ -10,8 +10,7 @@ let param = {
     id: '0005',
     name: 'Goro',
     age: 15
-  },
-  ReturnValues: 'ALL_NEW'
+  }
 }
 
 dc.put(param, (err, data) => {
