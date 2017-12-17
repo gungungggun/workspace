@@ -8,7 +8,8 @@ let param = {
   TableName: 'mock1',
   Key: {
     id: '0005'
-  }
+  },
+  ReturnValues: 'ALL_OLD'
 }
 
 dc.delete(param, (err, data) => {
