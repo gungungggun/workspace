@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script>
+            MathJax.Hub.Config({
+                skipStartupTypeset: true,
+                extensions: ["tex2jax.js"],
+                jax: ["input/TeX", "output/HTML-CSS"],
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+                }
+            });
+        </script>
+        <!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+    </head>
+    <body>
+        <script src="node_modules/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <section>
+            <h1>数式</h1>
+$$
+\sum _{k=1}^{10}k
+$$
+        </section>
+        <button onClick="replace()">click</button>
+        <div id="replace">
+        </div>
+        <script>
+            function replace () {
+                document.getElementById("replace").innerText = '$$\n\\sum _{k=1}^{10}k\n$$'
+                MathJax.Hub.Typeset(document.getElementById("replace"));
+            }
+        </script>
+    </body>
+</html>
