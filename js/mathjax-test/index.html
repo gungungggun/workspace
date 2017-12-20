@@ -9,8 +9,8 @@
                 extensions: ["tex2jax.js"],
                 jax: ["input/TeX", "output/HTML-CSS"],
                 tex2jax: {
-                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+                    inlineMath: [ ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'] ]
                 }
             });
         </script>
@@ -23,6 +23,11 @@
 $$
 \sum _{k=1}^{10}k
 $$
+
+\(
+\sum _{k=1}^{10}k
+\)
+
         </section>
         <button onClick="replace()">click</button>
         <div id="replace">
