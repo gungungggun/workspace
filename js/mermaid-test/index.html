@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div class="mermaid">
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+    </div>
+
+    <div id="replace" class="mermaid">
+    </div>
+
+    <button onClick="replace()">click</button>
+
+    <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.js"></script>
+    <script>
+        function replace () {
+            document.getElementById("replace").innerText = 'graph TD;\nA-->B;'
+            mermaid.initialize()
+        }
+    </script>
+</body>
+</html>
