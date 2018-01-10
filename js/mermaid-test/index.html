@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="https://unpkg.com/mermaid@0.5.8/dist/mermaid.css">
 </head>
 <body>
     <div class="mermaid">
@@ -18,11 +19,14 @@ graph TD;
 
     <button onClick="replace()">click</button>
 
-    <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.js"></script>
+    <script src="https://unpkg.com/mermaid@0.5.8/dist/mermaid.js"></script>
     <script>
         function replace () {
-            document.getElementById("replace").innerText = 'graph TD;\nA-->B;'
-            mermaid.initialize()
+
+            var text = 'graph TD\nA-->B\nA-->C\nB-->D\nD-->A\n'
+            mermaid.mermaidAPI.render('graph', text, (svg) => {
+                document.getElementById("replace").innerHTML = svg
+            })
         }
     </script>
 </body>
