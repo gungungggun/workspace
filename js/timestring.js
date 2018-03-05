@@ -1,3 +1,4 @@
+console.log(new Date().getTime())
 let time = new Date().getTime().toString(16)
 console.log(time)
 
