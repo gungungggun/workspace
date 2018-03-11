@@ -1,0 +1,12 @@
+{
+    "name": "gun/faker",
+    "authors": [
+        {
+            "name": "gun",
+            "email": "gungungggun@gmail.com"
+        }
+    ],
+    "require": {
+        "fzaninotto/faker": "^1.7"
+    }
+}
