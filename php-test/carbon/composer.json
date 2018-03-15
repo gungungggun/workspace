@@ -1,0 +1,12 @@
+{
+    "name": "gun/carbon",
+    "authors": [
+        {
+            "name": "gun",
+            "email": "gungungggun@gmail.com"
+        }
+    ],
+    "require": {
+        "nesbot/carbon": "^1.24"
+    }
+}
