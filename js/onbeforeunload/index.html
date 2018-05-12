@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.addEventListener("beforeunload", function(e){
+          var message = ""
+	      e.returnValue = message
+          return message
+        })
+    </script>
+</head>
+<body>
+<a href="http://www.google.com/">Go to Google.com</a>
+</body>
+</html>
