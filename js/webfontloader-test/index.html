@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        @font-face {
+            font-family: 'Kavivanar';
+            src: url(https://fonts.gstatic.com/s/kavivanar/v3/o-0IIpQgyXYSwhxP7_Jr5TRASf6M7Q.woff2) format('woff2');
+        }
+        @font-face {
+            font-family: 'Indie Flower';
+            src: url(https://fonts.gstatic.com/s/indieflower/v9/m8JVjfNVeKWVnh3QMuKkFcZVaUuH99GUDg.woff2) format('woff2');
+        }
+        .wf1 {
+            font-family: 'Kavivanar';
+        }
+        .wf2 {
+            font-family: 'Indie Flower';
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js"></script>
+    <script>
+        WebFont.load({
+            custom: {
+                families: ['Kavivanar', 'Indie Flower']
+            },
+            loading: function() {
+                console.log('loading');
+            },
+            active: function() {
+                console.log('active');
+            },
+            inactive: function() {
+                console.log('inactive');
+            },
+            fontloading: function(familyName, fvd) {
+                console.log('fontloading', familyName, fvd);
+            },
+            fontactive: function(familyName, fvd) {
+                console.log('fontactive', familyName, fvd);
+            },
+            fontinactive: function(familyName, fvd) {
+                console.log('fontinactive', familyName, fvd);
+            }
+        });
+    </script>
+</head>
+<body>
+    <p>test</p>
+    <p class="wf1">test</p>
+    <p class="wf2">test</p>
+</body>
+</html>
