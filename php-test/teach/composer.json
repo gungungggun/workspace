@@ -1,0 +1,12 @@
+{
+    "name": "gun/teach",
+    "authors": [
+        {
+            "name": "gun",
+            "email": "gungungggun@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "7.4.*"
+    }
+}
