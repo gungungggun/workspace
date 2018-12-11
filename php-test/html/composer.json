@@ -1,0 +1,13 @@
+{
+    "name": "gun/html",
+    "authors": [
+        {
+            "name": "gun",
+            "email": "gungungggun@gmail.com"
+        }
+    ],
+    "require": {},
+    "scripts": {
+        "serve": "php -S localhost:8080 -t public"
+    }
+}
