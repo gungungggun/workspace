@@ -1,0 +1,13 @@
+{
+    "name": "gun/phpunit",
+    "authors": [
+        {
+            "name": "gun",
+            "email": "gungungggun@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    }
+}
