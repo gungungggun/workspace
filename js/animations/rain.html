@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<style>
+html {
+    padding: 0;
+    margin: 0;
+}
+body {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 300vh;
+    overflow-x: hidden;
+}
+canvas {
+	display: block;
+    position: absolute;
+    top: 0;
+}
+.requests {
+    width: 100%;
+    height: 300vh;
+}
+</style>
+</head>
+<body>
+    <div class="requests">
+      <canvas id="c"></canvas>
+    </div>
+<script>
+(function(){
+
+  var requestId = ''
+  var c = document.getElementById("c"),
+      ctx = c.getContext("2d");
+  var lines = [],
+      n = 0;
+
+  function init() {
+    c.width = innerWidth;
+    c.height = $('.requests').height();
+
+    var spacing = 90,
+        xSpacing = 0,
+        colors = ["#fcf1eb", "#fcefe8", "#f0f0e6", "#edf3fc"],
+        i;
+
+    lines = [];
+    n = c.width > c.height ? c.width / spacing : c.height /spacing;
+
+    for (i = 0; i < n; i++){
+      xSpacing += spacing;
+      const min = 50;
+      let nowHeight = Math.random()*(innerHeight/6 - min) + min;
+      lines.push({
+        x: xSpacing,
+        y: Math.round(Math.random()*c.height),
+        width: 4,
+        height: nowHeight,
+        speed: nowHeight * 0.1,
+        color: colors[Math.floor(Math.random() * colors.length)]
+      });
+    }
+  }
+
+  function draw(){
+    var i;
+    ctx.clearRect(0,0,c.width,c.height);
+
+    for (i = 0; i < n; i++){
+      ctx.beginPath();
+      ctx.lineWidth = lines[i].width;
+      ctx.strokeStyle = lines[i].color;
+      ctx.moveTo(lines[i].x,lines[i].y);
+      ctx.lineTo(lines[i].x-lines[i].height,lines[i].y+lines[i].height);
+      ctx.closePath();
+      ctx.stroke();
+      lines[i].y += lines[i].speed;
+      lines[i].x -= lines[i].speed;
+
+      if (lines[i].y > c.height)
+        lines[i].y = 0 - lines[i].height;
+      if (lines[i].x < 0)
+        lines[i].x = c.width - lines[i].width;
+    }
+    requestId = requestAnimationFrame(draw);
+
+  }
+  init();
+  draw();
+
+  var timer = false;
+  $(window).resize(function() {
+    if (requestId != '') {
+      cancelAnimationFrame(requestId)
+      requestId = ''
+    }
+    if (timer !== false) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(function() {
+      init();
+      draw();
+    }, 200);
+  });
+}());
+</script>
+</body>
+</html>
