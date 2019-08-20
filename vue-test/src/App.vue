@@ -1,17 +1,19 @@
 <template lang="pug">
   div#app
-    SimpleForm
+    ComponentsTest
 </template>
 
 <script>
 import ColorChange from './components/ColorChange.vue'
 import SimpleForm from './components/SimpleForm.vue'
+//import ComponentsTest form './components/ComponentsTest.vue'
 
 export default {
   name: 'app',
   components: {
     ColorChange,
-    SimpleForm
+    SimpleForm,
+    //ComponentsTest
   }
 }
 </script>

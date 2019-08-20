@@ -2,6 +2,8 @@
 
 ini_set('error_reporting', E_ALL);
 
+var_dump($_ENV);
+
 include('../config/base.php');
 
 $errorMessage = '';
