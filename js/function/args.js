@@ -17,8 +17,8 @@ console.log(b)
 //console.log(c)
 
 test2 = function({a2, b2}) {
-  console.log(a2)
-  console.log(b2)
+  console.log(a)
+  console.log(b)
 }
 
 test2({a2: 'aaa2'})
